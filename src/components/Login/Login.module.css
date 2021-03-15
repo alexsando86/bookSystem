@@ -1,0 +1,54 @@
+.title {
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.loginBox {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 500px;
+	height: 500px;
+	margin: 0 auto;
+	background: lightsalmon;
+	border-radius: 10px;
+	box-shadow: 5px 5px 0 0 #000;
+}
+.loginBox .inputBox {
+	width: 300px;
+}
+.loginBox input {
+	width: 100%;
+	height: 40px;
+	padding: 0 10px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.loginBox div:not(:first-of-type) {
+	margin-top: 10px;
+}
+.submit {
+	width: 100%;
+	height: 40px;
+	margin: 10px 0 0;
+	padding: 0;
+	background: none #000;
+	color: #fff;
+	font-size: 13px;
+	border: 0;
+	cursor: pointer;
+}
+.submit:hover {
+	background: #222;
+}
+.newjoin {
+	display: block;
+	width: 500px;
+	height: 40px;
+	margin: 20px auto;
+	box-sizing: border-box;
+	color: #fff;
+	border: 0;
+	cursor: pointer;
+	background: none dodgerblue;
+}
