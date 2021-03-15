@@ -13,6 +13,11 @@ const Join = ({ authService }) => {
 		joinPW: "",
 	});
 
+	const [alertMsg, setAlertMsg] = useState({
+		error: "",
+		success: "",
+	});
+
 	const onChange = (e) => {
 		setJoinUser({
 			...joinUser,
@@ -25,10 +30,21 @@ const Join = ({ authService }) => {
 		authService
 			.newJoin(joinUser.joinID, joinUser.joinPW)
 			.then((data) => {
-				alert("New Join Success");
+				// alert("New Join Success");
+				setAlertMsg({
+					...alertMsg,
+					success: "Success full",
+				});
+				setTimeout(() => {
+					history.push("/Login");
+				});
 			})
 			.catch((error) => {
-				alert(error.message);
+				// alert(error.message);
+				setAlertMsg({
+					...alertMsg,
+					error: error.message,
+				});
 			});
 	};
 
@@ -46,6 +62,8 @@ const Join = ({ authService }) => {
 					<div className={styles.join_input}>
 						<input placeholder="PASSWORD" type="password" name="joinPW" onChange={onChange} />
 					</div>
+					<div className={styles.alertMessageError}>{alertMsg.error}</div>
+					<div className={styles.alertMessageSccess}>{alertMsg.success}</div>
 					<button type="submit" className={styles.submit}>
 						회원가입
 					</button>

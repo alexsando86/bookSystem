@@ -43,3 +43,11 @@
 	color: #fff;
 	cursor: pointer;
 }
+.alertMessageError {
+	color: #ff0000;
+	margin: 10px 0;
+}
+.alertMessageSccess {
+	color: #4cd137;
+	margin: 10px 0;
+}

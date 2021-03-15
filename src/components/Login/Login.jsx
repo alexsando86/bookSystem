@@ -6,7 +6,7 @@ const Login = ({ authService }) => {
 	const history = useHistory();
 	const goToBookList = (userId) => {
 		history.push({
-			pathname: "/BookList/BookList",
+			pathname: "/BookList",
 			state: { id: userId },
 		});
 	};

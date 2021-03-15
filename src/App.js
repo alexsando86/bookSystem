@@ -18,6 +18,9 @@ function App() {
 					<Route path="/Join">
 						<Join authService={authService} />
 					</Route>
+					<Route path="/Login">
+						<Login authService={authService} />
+					</Route>
 					<Route path="/BookList">
 						<BookList authService={authService} />
 					</Route>
