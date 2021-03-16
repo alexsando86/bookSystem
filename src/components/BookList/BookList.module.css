@@ -1,0 +1,36 @@
+.booklist {
+	width: 1024px;
+	margin: 0 auto;
+}
+.user {
+	color: #8c7ae6;
+	font-weight: normal;
+}
+.user span {
+	color: #9c88ff;
+	font-weight: bold;
+}
+.buttonBox {
+	display: flex;
+	justify-content: space-between;
+}
+.bookBox {
+	border: 1px solid #e8e8e8;
+	padding: 20px;
+}
+.buttonBox button {
+	border: 0;
+	background: none;
+	width: 49%;
+	height: 50px;
+	margin: 25px 0;
+	font-size: 15px;
+	cursor: pointer;
+	color: #fff;
+}
+.buttonBox .logoutBox {
+	background: #353b48;
+}
+.buttonBox .addBook {
+	background: #535c68;
+}
