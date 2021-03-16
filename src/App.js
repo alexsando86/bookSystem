@@ -4,8 +4,10 @@ import BookList from "./components/BookList/BookList";
 import Join from "./components/Join/Join";
 import Login from "./components/Login/Login";
 import AuthService from "./service/auth_service";
+import DataService from "./service/db";
 
 const authService = new AuthService();
+const dataService = new DataService();
 
 function App() {
 	return (
@@ -22,7 +24,7 @@ function App() {
 						<Login authService={authService} />
 					</Route>
 					<Route path="/BookList">
-						<BookList authService={authService} />
+						<BookList authService={authService} dataService={dataService} />
 					</Route>
 				</Switch>
 			</BrowserRouter>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styles from "./BookList.module.css";
 
-const BookList = ({ authService }) => {
+const BookList = ({ authService, dataService }) => {
 	const [emailName, setEmailName] = useState("");
 	const history = useHistory();
 	const onLogout = () => {
@@ -20,11 +20,27 @@ const BookList = ({ authService }) => {
 
 	const onCheck = (e) => {
 		e.target.closest("tr").classList.toggle(styles.check);
-	}
+	};
+
+	// 도서추가
+	const [bookData, setBookData] = useState({
+		name: "",
+		publisher: "",
+		date: "",
+	});
+	const onChange = (e) => {
+		setBookData({
+			...bookData,
+			[e.target.name]: e.target.value,
+		});
+	};
+	const onBookAdd = () => {
+		dataService.writeData(bookData.name, bookData);
+	};
 
 	return (
 		<section className={styles.booklist}>
-			{emailName !==null && (
+			{emailName !== null && (
 				<h1 className={styles.user}>
 					<span>{emailName}</span> 님 환영합니다.
 				</h1>
@@ -42,11 +58,30 @@ const BookList = ({ authService }) => {
 					</thead>
 					<tbody>
 						<tr>
-							<td><input className={styles.checkbox} type="checkbox" name="check" onClick={onCheck} /></td>
+							<td>
+								<input className={styles.checkbox} type="checkbox" name="check" onClick={onCheck} />
+							</td>
 							<td>자바스크립트 개론</td>
 							<td>금성출판사</td>
 							<td>2021.03.16</td>
-							<td>육선도 <span className={styles.stateBook}>(대여중)</span></td>
+							<td>
+								육선도 <span className={styles.stateBook}>(대여중)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input className={styles.checkbox} type="checkbox" name="check" onClick={onCheck} />
+							</td>
+							<td>
+								<input className={styles.input} type="text" name="name" value={bookData.name} onChange={onChange} />
+							</td>
+							<td>
+								<input className={styles.input} type="text" name="publisher" value={bookData.publisher} onChange={onChange} />
+							</td>
+							<td>
+								<input className={styles.input} type="date" min="1950-01-01" max="9999-12-31" name="date" onChange={onChange} />
+							</td>
+							<td></td>
 						</tr>
 					</tbody>
 				</table>
@@ -55,7 +90,7 @@ const BookList = ({ authService }) => {
 				<button type="button" className={styles.rental}>
 					빌려가기
 				</button>
-				<button type="button" className={styles.addBook}>
+				<button type="button" className={styles.addBook} onClick={onBookAdd}>
 					도서추가
 				</button>
 				<button type="button" className={styles.removeBook}>

@@ -21,7 +21,7 @@
 .buttonBox button {
 	border: 0;
 	background: none;
-	flex:1;
+	flex: 1;
 	height: 50px;
 	margin: 25px 0;
 	font-size: 15px;
@@ -41,38 +41,40 @@
 	background: #1c4dc7;
 }
 .bookListTbl {
-	width:100%;
-	border-collapse:collapse;
+	width: 100%;
+	border-collapse: collapse;
 }
-.bookListTbl th , .bookListTbl td {
-	padding:10px;
-	font-size:15px;
-	border:1px solid rgb(154, 165, 180);
-	text-align:center;
+.bookListTbl th,
+.bookListTbl td {
+	padding: 10px;
+	font-size: 15px;
+	border: 1px solid rgb(154, 165, 180);
+	text-align: center;
 }
 .bookListTbl .check {
-	background:#a0ff88
+	background: #a0ff88;
 }
 .bookListTbl th {
-	font-weight:normal;
-	background:#efefef;
+	font-weight: normal;
+	background: #efefef;
 }
 .stateBook {
-	color:#ff0000;
+	color: #ff0000;
 }
 .checkbox {
-	width:15px;
-	height:15px;
+	width: 15px;
+	height: 15px;
 }
 .bookName {
-
 }
-.publisher{
-	
+.publisher {
 }
-.date{
-
+.date {
 }
-.status{
-
+.status {
+}
+.input {
+	width: 100%;
+	height: 30px;
+	border: 1px solid #ccc;
 }
