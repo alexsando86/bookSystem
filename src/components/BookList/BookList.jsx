@@ -11,7 +11,7 @@ const BookList = ({ authService }) => {
 
 	useEffect(() => {
 		authService.onAuthChange((user) => {
-			setEmailName(user.email);
+			setEmailName(user?.email);
 			if (!user) {
 				history.push("/");
 			}
@@ -20,7 +20,7 @@ const BookList = ({ authService }) => {
 
 	return (
 		<section className={styles.booklist}>
-			{emailName && (
+			{emailName !==null && (
 				<h1 className={styles.user}>
 					<span>{emailName}</span> 님 환영합니다.
 				</h1>

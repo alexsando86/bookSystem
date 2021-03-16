@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import styles from "./Login.module.css";
 
 const Login = ({ authService }) => {
+	const [alertMsg, setAlertMsg] = useState('');
 	const history = useHistory();
 	const goToBookList = (userId) => {
 		history.push({
@@ -29,7 +30,9 @@ const Login = ({ authService }) => {
 
 	const onLogin = (event) => {
 		event.preventDefault();
-		authService.login(value.userId, value.userPassword).then((data) => goToBookList(data.user.uid));
+		authService.login(value.userId, value.userPassword).then((data) => goToBookList(data.user.uid)).catch(error => {
+			setAlertMsg(error.message);
+		});
 	};
 
 	// 로그인유지하기
@@ -50,6 +53,7 @@ const Login = ({ authService }) => {
 					<div className={styles.inputBox}>
 						<input type="password" placeholder="PASSWORD" name="userPassword" value={value.userPassword} onChange={onChange} />
 					</div>
+					<p className={styles.errorMessage}>{alertMsg}</p>
 					<button type="submit" className={styles.submit}>
 						로그인
 					</button>

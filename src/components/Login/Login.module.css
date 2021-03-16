@@ -10,7 +10,7 @@
 	width: 500px;
 	height: 500px;
 	margin: 0 auto;
-	background: lightsalmon;
+	background: rgb(245, 163, 10);
 	border-radius: 10px;
 	box-shadow: 5px 5px 0 0 #000;
 }
@@ -51,4 +51,8 @@
 	border: 0;
 	cursor: pointer;
 	background: none dodgerblue;
+}
+.errorMessage {
+	width:300px;
+	color:#fff;
 }
