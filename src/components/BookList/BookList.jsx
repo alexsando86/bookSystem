@@ -20,9 +20,11 @@ const BookList = ({ authService }) => {
 
 	return (
 		<section className={styles.booklist}>
-			<h1 className={styles.user}>
-				<span>{emailName}</span> 님 환영합니다.
-			</h1>
+			{emailName && (
+				<h1 className={styles.user}>
+					<span>{emailName}</span> 님 환영합니다.
+				</h1>
+			)}
 			<div className={styles.bookBox}>
 				<ul className={styles.bookList}>
 					<li>자바스크립트 개론</li>
