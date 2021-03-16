@@ -21,7 +21,7 @@
 .buttonBox button {
 	border: 0;
 	background: none;
-	width: 49%;
+	flex:1;
 	height: 50px;
 	margin: 25px 0;
 	font-size: 15px;
@@ -32,5 +32,47 @@
 	background: #353b48;
 }
 .buttonBox .addBook {
-	background: #535c68;
+	background: #15b127;
+}
+.buttonBox .removeBook {
+	background: #df9800;
+}
+.buttonBox .rental {
+	background: #1c4dc7;
+}
+.bookListTbl {
+	width:100%;
+	border-collapse:collapse;
+}
+.bookListTbl th , .bookListTbl td {
+	padding:10px;
+	font-size:15px;
+	border:1px solid rgb(154, 165, 180);
+	text-align:center;
+}
+.bookListTbl .check {
+	background:#a0ff88
+}
+.bookListTbl th {
+	font-weight:normal;
+	background:#efefef;
+}
+.stateBook {
+	color:#ff0000;
+}
+.checkbox {
+	width:15px;
+	height:15px;
+}
+.bookName {
+
+}
+.publisher{
+	
+}
+.date{
+
+}
+.status{
+
 }

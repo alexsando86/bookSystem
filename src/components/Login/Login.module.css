@@ -10,7 +10,7 @@
 	width: 500px;
 	height: 500px;
 	margin: 0 auto;
-	background: rgb(245, 163, 10);
+	background: rgb(245, 186, 78);
 	border-radius: 10px;
 	box-shadow: 5px 5px 0 0 #000;
 }
@@ -32,7 +32,7 @@
 	height: 40px;
 	margin: 10px 0 0;
 	padding: 0;
-	background: none #000;
+	background: none rgb(0, 0, 0);
 	color: #fff;
 	font-size: 13px;
 	border: 0;
