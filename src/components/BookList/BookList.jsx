@@ -22,20 +22,9 @@ const BookList = ({ authService, dataService }) => {
 		e.target.closest("tr").classList.toggle(styles.check);
 	};
 
-	// 도서추가
-	const [bookData, setBookData] = useState({
-		name: "",
-		publisher: "",
-		date: "",
-	});
-	const onChange = (e) => {
-		setBookData({
-			...bookData,
-			[e.target.name]: e.target.value,
-		});
-	};
 	const onBookAdd = () => {
-		dataService.writeData(bookData.name, bookData);
+		// dataService.writeData(bookData.name, bookData);
+		history.push('/Make')
 	};
 
 	return (
@@ -68,7 +57,7 @@ const BookList = ({ authService, dataService }) => {
 								육선도 <span className={styles.stateBook}>(대여중)</span>
 							</td>
 						</tr>
-						<tr>
+						{/* <tr>
 							<td>
 								<input className={styles.checkbox} type="checkbox" name="check" onClick={onCheck} />
 							</td>
@@ -82,7 +71,7 @@ const BookList = ({ authService, dataService }) => {
 								<input className={styles.input} type="date" min="1950-01-01" max="9999-12-31" name="date" onChange={onChange} />
 							</td>
 							<td></td>
-						</tr>
+						</tr> */}
 					</tbody>
 				</table>
 			</div>

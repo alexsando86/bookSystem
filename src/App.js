@@ -3,13 +3,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import BookList from "./components/BookList/BookList";
 import Join from "./components/Join/Join";
 import Login from "./components/Login/Login";
-import AuthService from "./service/auth_service";
-import DataService from "./service/db";
+import Make from "./components/Make/Make";
 
-const authService = new AuthService();
-const dataService = new DataService();
-
-function App() {
+function App({ authService, dataService }) {
 	return (
 		<>
 			<BrowserRouter>
@@ -25,6 +21,9 @@ function App() {
 					</Route>
 					<Route path="/BookList">
 						<BookList authService={authService} dataService={dataService} />
+					</Route>
+					<Route path="/Make">
+						<Make />
 					</Route>
 				</Switch>
 			</BrowserRouter>

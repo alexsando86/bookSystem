@@ -1,0 +1,27 @@
+.makeWrap {
+	width:620px;
+	margin:20px auto;
+}
+.title {
+	font-size:20px;
+}
+.form {
+	margin:10px 0;
+}
+.form .input {
+	width:100%;
+	height:45px;
+	border:1px solid #ccc;
+	padding:0 15px;
+	box-sizing: border-box;
+	background:none;
+}
+.addButton {
+	width:100%;
+	height:45px;
+	border:0;
+	color:#fff;
+	font-size:15px;
+	background:none darkgoldenrod;
+	cursor:pointer;
+}
