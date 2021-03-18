@@ -69,7 +69,7 @@ const BookList = ({ authService, dataService }) => {
 					</thead>
 					<tbody>
 						{
-							isLoading &&
+							// isLoading &&
 							Object.keys(tableLine)?.map((key) => {
 								const { name, publisher, publisherDate} = tableLine[key];
 								return <TableList key={key} name={name} publisher={publisher} publisherDate={publisherDate} emailName={emailName} onCheck={onCheck} />

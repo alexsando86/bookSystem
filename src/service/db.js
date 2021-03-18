@@ -11,7 +11,7 @@ class DataService {
 	getUserData(update) {
 		// return database.ref(`bookStore/`).once("value");
 		database.ref(`bookStore/`).on("value", async (snapshot) => {
-			await update(snapshot.val());
+			snapshot.val() && (await update(snapshot.val()));
 		});
 	}
 
