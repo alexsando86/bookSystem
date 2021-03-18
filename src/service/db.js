@@ -1,12 +1,23 @@
 import firebaseApp from "./firebase";
-const database = firebaseApp.database();
+export const database = firebaseApp.database();
 
 class DataService {
 	// write
-	writeData(name, bookData) {
+	writeUserData(name, bookData) {
 		database.ref(`bookStore/${name}/`).set(bookData);
 	}
-	removeData() {}
+
+	// getData
+	getUserData(update) {
+		// return database.ref(`bookStore/`).once("value");
+		database.ref(`bookStore/`).on("value", async (snapshot) => {
+			await update(snapshot.val());
+		});
+	}
+
+	removeData(name) {
+		database.ref(`bookStore/${name}`).remove();
+	}
 }
 
 export default DataService;

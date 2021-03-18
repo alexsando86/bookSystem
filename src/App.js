@@ -23,7 +23,7 @@ function App({ authService, dataService }) {
 						<BookList authService={authService} dataService={dataService} />
 					</Route>
 					<Route path="/Make">
-						<Make />
+						<Make authService={authService} dataService={dataService} />
 					</Route>
 				</Switch>
 			</BrowserRouter>

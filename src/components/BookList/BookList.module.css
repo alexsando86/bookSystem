@@ -43,6 +43,7 @@
 .bookListTbl {
 	width: 100%;
 	border-collapse: collapse;
+	table-layout: fixed;
 }
 .bookListTbl th,
 .bookListTbl td {
@@ -65,11 +66,17 @@
 	width: 15px;
 	height: 15px;
 }
+.checked {
+	width: 20px;
+}
 .bookName {
+	width: 30%;
 }
 .publisher {
+	width: 20%;
 }
 .date {
+	width: 20%;
 }
 .status {
 }

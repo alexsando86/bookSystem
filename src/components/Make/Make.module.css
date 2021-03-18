@@ -1,27 +1,37 @@
 .makeWrap {
-	width:620px;
-	margin:20px auto;
+	width: 620px;
+	margin: 20px auto;
 }
 .title {
-	font-size:20px;
+	font-size: 20px;
 }
 .form {
-	margin:10px 0;
+	margin: 10px 0;
 }
 .form .input {
-	width:100%;
-	height:45px;
-	border:1px solid #ccc;
-	padding:0 15px;
+	width: 100%;
+	height: 45px;
+	border: 1px solid #ccc;
+	padding: 0 15px;
 	box-sizing: border-box;
-	background:none;
+	background: none;
 }
-.addButton {
-	width:100%;
-	height:45px;
-	border:0;
-	color:#fff;
-	font-size:15px;
-	background:none darkgoldenrod;
-	cursor:pointer;
+.buttonBox {
+	display: flex;
+}
+.buttonBox button {
+	border: 0;
+	background: none;
+	color: #fff;
+	font-size: 15px;
+	cursor: pointer;
+}
+.buttonBox .addButton {
+	flex: 1;
+	height: 45px;
+	background: none rgb(209, 66, 23);
+}
+.buttonBox .addButtonPrev {
+	flex: 1;
+	background: rgb(255, 164, 27);
 }

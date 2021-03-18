@@ -4,15 +4,6 @@ class AuthService {
 	// Join
 	newJoin(email, password) {
 		return firebaseApp.auth().createUserWithEmailAndPassword(email, password);
-		// .then((user) => {
-		// 	console.log("New Join Success");
-		// 	console.log(user);
-		// })
-		// .catch((error) => {
-		// 	var errorCode = error.code;
-		// 	var errorMessage = error.message;
-		// 	console.log(errorCode, errorMessage);
-		// });
 	}
 
 	// Login
