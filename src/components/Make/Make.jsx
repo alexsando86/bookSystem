@@ -8,6 +8,7 @@ const Make = ({authService, dataService}) => {
 		name: "",
 		publisher: "",
 		publisherDate: "",
+		rental:'',
 	});
 
 	// name값에 대한 value를 지정 후 bookData에 저장.
