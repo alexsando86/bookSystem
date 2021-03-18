@@ -5,7 +5,7 @@ import styles from "./BookList.module.css";
 const BookList = ({ authService, dataService }) => {
 	const [tableLine, setTableLine] = useState({});
 	const [emailName, setEmailName] = useState("");
-	const [currentBookName, setCurrentBookName] = useState("");
+	const [currentBookName, setCurrentBookName] = useState([]);
 	const history = useHistory();
 
 	// 로그아웃
@@ -17,18 +17,24 @@ const BookList = ({ authService, dataService }) => {
 	// 체크시 현재 선택된 도서의 name값을 넘겨줌.
 	const onCheck = (e, name) => {
 		e.target.closest("tr").classList.toggle(styles.check);
-		e.target.checked && setCurrentBookName(name);
+		if (e.target.checked) {
+			setCurrentBookName([...currentBookName, name]);
+		} else {
+			setCurrentBookName(currentBookName.filter((item) => item !== name));
+		}
 	};
 
 	// 도서추가로 페이지이동
 	const onBookAdd = () => {
-		history.push('/Make')
+		history.push("/Make");
 	};
 
 	// 도서삭제
 	const onRemoveBook = () => {
-		dataService.removeData(currentBookName);
-	}
+		currentBookName?.map((item) => {
+			return dataService.removeData(item);
+		});
+	};
 
 	// 로그인 상태체크 및 user email 가져오기
 	useEffect(() => {
@@ -38,16 +44,16 @@ const BookList = ({ authService, dataService }) => {
 				history.push("/");
 			}
 		});
-	}, [authService, history]);
+	}, [authService, history, currentBookName]);
 
 	// 페이지 처음 로딩시 데이터 가져오기
 	const [isLoading, setIsLoading] = useState(false);
 	useEffect(() => {
-		dataService.getUserData(update => {
+		dataService.getUserData((update) => {
 			setTableLine(update);
 			setIsLoading(true);
-		})
-	}, [dataService,isLoading])
+		});
+	}, [dataService, isLoading]);
 
 	return (
 		<section className={styles.booklist}>
@@ -71,8 +77,8 @@ const BookList = ({ authService, dataService }) => {
 						{
 							// isLoading &&
 							Object.keys(tableLine)?.map((key) => {
-								const { name, publisher, publisherDate} = tableLine[key];
-								return <TableList key={key} name={name} publisher={publisher} publisherDate={publisherDate} emailName={emailName} onCheck={onCheck} />
+								const { name, publisher, publisherDate } = tableLine[key];
+								return <TableList key={key} name={name} publisher={publisher} publisherDate={publisherDate} emailName={emailName} onCheck={onCheck} />;
 							})
 						}
 					</tbody>
@@ -96,11 +102,18 @@ const BookList = ({ authService, dataService }) => {
 	);
 };
 
-const TableList = ({name, publisher, publisherDate, emailName, onCheck}) => {
+const TableList = ({ name, publisher, publisherDate, onCheck }) => {
 	return (
 		<tr>
 			<td>
-				<input className={styles.checkbox} type="checkbox" name="check" onClick={(e) => { onCheck(e, name)}} />
+				<input
+					className={styles.checkbox}
+					type="checkbox"
+					name="check"
+					onClick={(e) => {
+						onCheck(e, name);
+					}}
+				/>
 			</td>
 			<td>{name}</td>
 			<td>{publisher}</td>
@@ -109,7 +122,7 @@ const TableList = ({name, publisher, publisherDate, emailName, onCheck}) => {
 				<span className={styles.stateBook}></span>
 			</td>
 		</tr>
-	)
+	);
 };
 
 export default BookList;
