@@ -3,10 +3,12 @@ import { useHistory } from "react-router-dom";
 import styles from "./BookList.module.css";
 
 const BookList = ({ authService, dataService }) => {
+	const history = useHistory();
+	const [user, setUser] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
 	const [tableLine, setTableLine] = useState({});
 	const [emailName, setEmailName] = useState("");
 	const [currentBookName, setCurrentBookName] = useState([]);
-	const history = useHistory();
 
 	// 로그아웃
 	const onLogout = () => {
@@ -36,9 +38,28 @@ const BookList = ({ authService, dataService }) => {
 		});
 	};
 
+	// 빌려가기
+	const onRental = () => {
+		currentBookName?.map(key => {
+			return dataService.getUpdateData(tableLine, key, emailName);
+		})
+		console.log(tableLine)
+	}
+
+	// 반납하기
+	const onReturn = () => {
+		console.log('return');
+		
+		currentBookName?.map(key => {
+			return dataService.getUpdateData(tableLine, key, '');
+		})
+	}
+
 	// 로그인 상태체크 및 user email 가져오기
 	useEffect(() => {
+		console.log(currentBookName)
 		authService.onAuthChange((user) => {
+			user && setUser(user);
 			setEmailName(user?.email);
 			if (!user) {
 				history.push("/");
@@ -47,8 +68,8 @@ const BookList = ({ authService, dataService }) => {
 	}, [authService, history, currentBookName]);
 
 	// 페이지 처음 로딩시 데이터 가져오기
-	const [isLoading, setIsLoading] = useState(false);
 	useEffect(() => {
+		
 		dataService.getUserData((update) => {
 			setTableLine(update);
 			setIsLoading(true);
@@ -75,25 +96,28 @@ const BookList = ({ authService, dataService }) => {
 					</thead>
 					<tbody>
 						{
-							// isLoading &&
+							isLoading &&
 							Object.keys(tableLine)?.map((key) => {
-								const { name, publisher, publisherDate } = tableLine[key];
-								return <TableList key={key} name={name} publisher={publisher} publisherDate={publisherDate} emailName={emailName} onCheck={onCheck} />;
+								const { name, publisher, publisherDate, rental } = tableLine[key];
+								return <TableList key={key} name={name} publisher={publisher} publisherDate={publisherDate} rental={rental} emailName={emailName} onCheck={onCheck} />;
 							})
 						}
 					</tbody>
 				</table>
 			</div>
 			<div className={styles.buttonBox}>
-				<button type="button" className={styles.rental}>
+				<button type="button" className={styles.rentalBook} onClick={onRental}>
 					빌려가기
 				</button>
-				<button type="button" className={styles.addBook} onClick={onBookAdd}>
-					도서추가
+				<button type="button" className={styles.returnBook} onClick={onReturn}>
+					반납하기
 				</button>
-				<button type="button" className={styles.removeBook} onClick={onRemoveBook}>
-					도서삭제
-				</button>
+					{user.uid === 'OcUzB7bg69SCTRMoktYumlOOaa03' && (
+						<>
+						<button type="button" className={styles.addBook} onClick={onBookAdd}>도서추가</button>
+						<button type="button" className={styles.removeBook} onClick={onRemoveBook}>도서삭제</button>
+						</>
+					)}
 				<button type="button" className={styles.logoutBox} onClick={onLogout}>
 					로그아웃
 				</button>
@@ -102,7 +126,7 @@ const BookList = ({ authService, dataService }) => {
 	);
 };
 
-const TableList = ({ name, publisher, publisherDate, onCheck }) => {
+const TableList = ({ name, publisher, publisherDate, onCheck, rental }) => {
 	return (
 		<tr>
 			<td>
@@ -119,7 +143,7 @@ const TableList = ({ name, publisher, publisherDate, onCheck }) => {
 			<td>{publisher}</td>
 			<td>{publisherDate}</td>
 			<td>
-				<span className={styles.stateBook}></span>
+				{rental} <span className={styles.stateBook}></span>
 			</td>
 		</tr>
 	);

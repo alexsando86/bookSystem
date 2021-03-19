@@ -15,6 +15,21 @@ class DataService {
 		});
 	}
 
+	getUpdateData(tableLine, name, emailName) {
+		const postData = {
+			...tableLine,
+			[name]: {
+				...tableLine[name],
+				rental: emailName,
+			},
+		};
+
+		const updates = {};
+		updates[`bookStore`] = postData;
+
+		return database.ref().update(updates);
+	}
+
 	removeData(name) {
 		database.ref(`bookStore/${name}`).remove();
 	}

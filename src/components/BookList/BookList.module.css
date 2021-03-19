@@ -37,8 +37,11 @@
 .buttonBox .removeBook {
 	background: #df9800;
 }
-.buttonBox .rental {
+.buttonBox .rentalBook {
 	background: #1c4dc7;
+}
+.buttonBox .returnBook {
+	background: #1cc739;
 }
 .bookListTbl {
 	width: 100%;
