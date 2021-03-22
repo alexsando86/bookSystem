@@ -16,18 +16,17 @@ class DataService {
 	}
 
 	getUpdateData(tableLine, name, emailName) {
-		const postData = {
-			...tableLine,
-			[name]: {
-				...tableLine[name],
-				rental: emailName,
-			},
-		};
-
+		// const postData = {
+		// 	...tableLine,
+		// 	[name]: {
+		// 		...tableLine[name],
+		// 		rental: emailName,
+		// 	},
+		// };
 		const updates = {};
-		updates[`bookStore`] = postData;
-
-		return database.ref().update(updates);
+		updates[`bookStore`] = tableLine;
+		// database.ref().update(updates);
+		database.ref().update(updates);
 	}
 
 	removeData(name) {

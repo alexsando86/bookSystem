@@ -39,25 +39,42 @@ const BookList = ({ authService, dataService }) => {
 	};
 
 	// 빌려가기
-	const onRental = () => {
-		currentBookName?.map(key => {
-			return dataService.getUpdateData(tableLine, key, emailName);
-		})
-		console.log(tableLine)
+	const onRental =  () => {
+		currentBookName?.map(key => (
+			setTableLine(prevState => {
+				return {
+					...prevState,
+					[key]: {
+						...prevState[key],
+						rental:emailName
+					}
+				}
+			})
+		));
+		dataService.getUpdateData(tableLine)
 	}
 
 	// 반납하기
 	const onReturn = () => {
-		console.log('return');
-		
-		currentBookName?.map(key => {
-			return dataService.getUpdateData(tableLine, key, '');
-		})
+		currentBookName?.map(key => (
+			setTableLine(prevState => {
+				return {
+					...prevState,
+					[key]: {
+						...prevState[key],
+						rental:''
+					}
+				}
+			})
+		));
+		dataService.getUpdateData(tableLine)
+		// currentBookName?.map(key => (
+		// 	dataService.getUpdateData(setTableLine, key, '')
+		// ))
 	}
 
 	// 로그인 상태체크 및 user email 가져오기
 	useEffect(() => {
-		console.log(currentBookName)
 		authService.onAuthChange((user) => {
 			user && setUser(user);
 			setEmailName(user?.email);
@@ -69,7 +86,6 @@ const BookList = ({ authService, dataService }) => {
 
 	// 페이지 처음 로딩시 데이터 가져오기
 	useEffect(() => {
-		
 		dataService.getUserData((update) => {
 			setTableLine(update);
 			setIsLoading(true);
