@@ -3,11 +3,11 @@
 	margin: 0 auto;
 }
 .user {
-	color: #8c7ae6;
+	color: #d03b5b;
 	font-weight: normal;
 }
 .user span {
-	color: #9c88ff;
+	color: #d03b5b;
 	font-weight: bold;
 }
 .buttonBox {
@@ -22,6 +22,7 @@
 	border: 0;
 	background: none;
 	flex: 1;
+	border:1px solid #fff;
 	height: 50px;
 	margin: 25px 0;
 	font-size: 15px;
@@ -29,19 +30,19 @@
 	color: #fff;
 }
 .buttonBox .logoutBox {
-	background: #353b48;
-}
-.buttonBox .addBook {
-	background: #15b127;
+	background: #485460;
 }
 .buttonBox .removeBook {
-	background: #df9800;
+	background: #485460;
 }
-.buttonBox .rentalBook {
-	background: #1c4dc7;
+.buttonBox .addBook {
+	background: #485460;
 }
 .buttonBox .returnBook {
-	background: #1cc739;
+	background: #485460;
+}
+.buttonBox .rentalBook {
+	background: #485460;
 }
 .bookListTbl {
 	width: 100%;
@@ -52,15 +53,16 @@
 .bookListTbl td {
 	padding: 10px;
 	font-size: 15px;
-	border: 1px solid rgb(154, 165, 180);
+	border: 1px solid #d2dae2;
 	text-align: center;
 }
 .bookListTbl .check {
-	background: #a0ff88;
+	background: #ffc048;
 }
 .bookListTbl th {
 	font-weight: normal;
-	background: #efefef;
+	/* background: #f8850a; */
+	/* color:#fff; */
 }
 .stateBook {
 	color: #ff0000;

@@ -3,12 +3,13 @@
 	width: 620px;
 	margin: 20px auto;
 	padding: 20px 30px;
-	border: 1px solid #e9e9e9;
+	border: 1px solid rgb(96, 115, 150);
 	box-sizing: border-box;
 }
 .title {
 	font-size: 28px;
 	text-align: center;
+	color:#d03b5b;
 }
 .join_input {
 	margin-top: 10px;
@@ -24,13 +25,12 @@
 	width: 100%;
 	height: 45px;
 	margin-top: 10px;
-	background: none #666;
+	background: none #485460;
 	color: #fff;
 	border: 0;
 	cursor: pointer;
 }
 .submit:hover {
-	background: #222;
 	color: chartreuse;
 }
 .home {
@@ -39,7 +39,7 @@
 	top: 30px;
 	padding: 10px;
 	border: 0;
-	background: #000;
+	background: #808e9b;
 	color: #fff;
 	cursor: pointer;
 }

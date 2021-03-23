@@ -29,9 +29,9 @@
 .buttonBox .addButton {
 	flex: 1;
 	height: 45px;
-	background: none rgb(209, 66, 23);
+	background: none #485460;
 }
 .buttonBox .addButtonPrev {
 	flex: 1;
-	background: rgb(255, 164, 27);
+	background: #808e9b;
 }
