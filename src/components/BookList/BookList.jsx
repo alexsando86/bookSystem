@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import styles from "./BookList.module.css";
 
 const BookList = ({ authService, dataService }) => {
+	const administrator = 'OcUzB7bg69SCTRMoktYumlOOaa03';
 	const history = useHistory();
 	const [user, setUser] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
@@ -40,37 +41,20 @@ const BookList = ({ authService, dataService }) => {
 
 	// 빌려가기
 	const onRental =  () => {
-		currentBookName?.map(key => (
-			setTableLine(prevState => {
-				return {
-					...prevState,
-					[key]: {
-						...prevState[key],
-						rental:emailName
-					}
-				}
-			})
-		));
-		dataService.getUpdateData(tableLine)
+		currentBookName?.map(key => {
+			if(!tableLine[key]['rental']){
+				return dataService.getUpdateData(tableLine, key, emailName)
+			}
+		});
 	}
 
 	// 반납하기
 	const onReturn = () => {
-		currentBookName?.map(key => (
-			setTableLine(prevState => {
-				return {
-					...prevState,
-					[key]: {
-						...prevState[key],
-						rental:''
-					}
-				}
-			})
-		));
-		dataService.getUpdateData(tableLine)
-		// currentBookName?.map(key => (
-		// 	dataService.getUpdateData(setTableLine, key, '')
-		// ))
+		currentBookName?.map(key => {
+			if(tableLine[key]['rental'] === emailName){
+				return dataService.getUpdateData(tableLine, key, '')
+			}
+		});
 	}
 
 	// 로그인 상태체크 및 user email 가져오기
@@ -128,12 +112,12 @@ const BookList = ({ authService, dataService }) => {
 				<button type="button" className={styles.returnBook} onClick={onReturn}>
 					반납하기
 				</button>
-					{user.uid === 'OcUzB7bg69SCTRMoktYumlOOaa03' && (
+					{/* {user.uid === administrator && ( */}
 						<>
 						<button type="button" className={styles.addBook} onClick={onBookAdd}>도서추가</button>
 						<button type="button" className={styles.removeBook} onClick={onRemoveBook}>도서삭제</button>
 						</>
-					)}
+					{/* )} */}
 				<button type="button" className={styles.logoutBox} onClick={onLogout}>
 					로그아웃
 				</button>

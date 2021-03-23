@@ -7,28 +7,25 @@ class DataService {
 		database.ref(`bookStore/${name}/`).set(bookData);
 	}
 
-	// getData
+	// getData loading
 	getUserData(update) {
 		// return database.ref(`bookStore/`).once("value");
 		database.ref(`bookStore/`).on("value", async (snapshot) => {
-			snapshot.val() && (await update(snapshot.val()));
+			const val = snapshot.val();
+			snapshot.val() && (await update(val));
 		});
 	}
 
+	// update
 	getUpdateData(tableLine, name, emailName) {
-		// const postData = {
-		// 	...tableLine,
-		// 	[name]: {
-		// 		...tableLine[name],
-		// 		rental: emailName,
-		// 	},
-		// };
-		const updates = {};
-		updates[`bookStore`] = tableLine;
-		// database.ref().update(updates);
-		database.ref().update(updates);
+		const updates = {
+			...tableLine[name],
+			rental: emailName,
+		};
+		database.ref(`bookStore/${name}`).update(updates);
 	}
 
+	// remove
 	removeData(name) {
 		database.ref(`bookStore/${name}`).remove();
 	}
