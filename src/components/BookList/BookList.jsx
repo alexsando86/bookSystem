@@ -108,19 +108,19 @@ const BookList = ({ authService, dataService }) => {
 			</div>
 			<div className={styles.buttonBox}>
 				<button type="button" className={styles.rentalBook} onClick={onRental}>
-					빌려가기
+					🛒 빌려가기
 				</button>
 				<button type="button" className={styles.returnBook} onClick={onReturn}>
-					반납하기
+					🔄 반납하기
 				</button>
 					{/* {user.uid === administrator && ( */}
 						<>
-						<button type="button" className={styles.addBook} onClick={onBookAdd}>도서추가</button>
-						<button type="button" className={styles.removeBook} onClick={onRemoveBook}>도서삭제</button>
+						<button type="button" className={styles.addBook} onClick={onBookAdd}>📌 도서추가</button>
+						<button type="button" className={styles.removeBook} onClick={onRemoveBook}>❌ 도서삭제</button>
 						</>
 					{/* )} */}
 				<button type="button" className={styles.logoutBox} onClick={onLogout}>
-					로그아웃
+					🔴 로그아웃
 				</button>
 			</div>
 		</section>
