@@ -80,9 +80,10 @@ const BookList = ({ authService, dataService }) => {
 		<section className={styles.booklist}>
 			{emailName !== null && (
 				<h1 className={styles.user}>
-					<span>{emailName}</span> 님 환영합니다.
+					<span>{emailName}</span> 님 환영합니다. 😊
 				</h1>
 			)}
+			<h2 className={styles.system}>📖도서관리 시스템</h2>
 			<div className={styles.bookBox}>
 				<table className={styles.bookListTbl}>
 					<thead>
@@ -143,7 +144,7 @@ const TableList = ({ name, publisher, publisherDate, onCheck, rental }) => {
 			<td>{publisher}</td>
 			<td>{publisherDate}</td>
 			<td>
-				{rental} <span className={styles.stateBook}></span>
+				<span className={styles.stateBook}>{rental && `✔ ${rental}`}</span>
 			</td>
 		</tr>
 	);

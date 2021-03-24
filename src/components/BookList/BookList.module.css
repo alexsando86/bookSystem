@@ -22,7 +22,7 @@
 	border: 0;
 	background: none;
 	flex: 1;
-	border:1px solid #fff;
+	border: 1px solid #fff;
 	height: 50px;
 	margin: 25px 0;
 	font-size: 15px;
@@ -65,7 +65,7 @@
 	/* color:#fff; */
 }
 .stateBook {
-	color: #ff0000;
+	color: #2cb100;
 }
 .checkbox {
 	width: 15px;
