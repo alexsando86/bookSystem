@@ -83,7 +83,7 @@ const BookList = ({ authService, dataService }) => {
 					<span>{emailName}</span> 님 환영합니다. 😊
 				</h1>
 			)}
-			<h2 className={styles.system}>📖도서관리 시스템</h2>
+			<h2 className={styles.system}>📖 도서관리 시스템 </h2>
 			<div className={styles.bookBox}>
 				<table className={styles.bookListTbl}>
 					<thead>

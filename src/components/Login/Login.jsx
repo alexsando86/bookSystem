@@ -44,7 +44,7 @@ const Login = ({ authService }) => {
 
 	return (
 		<>
-			<h1 className={styles.title}>Book Store</h1>
+			<h1 className={styles.title}>📔 Book Store</h1>
 			<div className={styles.loginBox}>
 				<form onSubmit={onLogin}>
 					<div className={styles.inputBox}>
