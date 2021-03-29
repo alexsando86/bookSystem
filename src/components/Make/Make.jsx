@@ -28,7 +28,7 @@ const Make = ({authService, dataService}) => {
 	const history = useHistory();
 	const writeDatabase = () => {
 		if(bookData.name && bookData.publisher ){
-			dataService.writeUserData(bookData.name,  bookData);
+			dataService.writeUserData(bookData.name.replace(/\./g, '%2E'),  bookData);
 			goToBookList();
 		} else {
 			alert('값을 입력하세요')
