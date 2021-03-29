@@ -49,6 +49,9 @@
 	border-collapse: collapse;
 	table-layout: fixed;
 }
+.bookListTbl tbody tr:hover {
+	background: #f7f1e3;
+}
 .bookListTbl th,
 .bookListTbl td {
 	padding: 10px;

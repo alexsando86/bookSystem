@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import styles from "./BookList.module.css";
 
 const BookList = ({ authService, dataService }) => {
-	const administrator = 'OcUzB7bg69SCTRMoktYumlOOaa03';
+	// const administrator = 'OcUzB7bg69SCTRMoktYumlOOaa03';
 	const history = useHistory();
 	const [user, setUser] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
