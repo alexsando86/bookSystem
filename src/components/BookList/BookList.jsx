@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import styles from "./BookList.module.css";
 
 const BookList = ({ authService, dataService }) => {
-	// const administrator = 'OcUzB7bg69SCTRMoktYumlOOaa03';
+	const administrator = 'OcUzB7bg69SCTRMoktYumlOOaa03';
 	const history = useHistory();
 	const [user, setUser] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +51,7 @@ const BookList = ({ authService, dataService }) => {
 	// 반납하기
 	const onReturn = () => {
 		currentBookName?.map(key => {
-			if(tableLine[key]['rental'] === emailName){
+			if(tableLine[key]['rental'] === emailName || user.uid === administrator){
 				return dataService.getUpdateData(tableLine, key, '')
 			}
 		});
@@ -113,12 +113,12 @@ const BookList = ({ authService, dataService }) => {
 				<button type="button" className={styles.returnBook} onClick={onReturn}>
 					🔄 반납하기
 				</button>
-					{/* {user.uid === administrator && ( */}
+					{user.uid === administrator && (
 						<>
 						<button type="button" className={styles.addBook} onClick={onBookAdd}>📌 도서추가</button>
 						<button type="button" className={styles.removeBook} onClick={onRemoveBook}>❌ 도서삭제</button>
 						</>
-					{/* )} */}
+					)}
 				<button type="button" className={styles.logoutBox} onClick={onLogout}>
 					🔴 로그아웃
 				</button>
